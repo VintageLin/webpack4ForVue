@@ -25,29 +25,6 @@ module.exports = {
         loader: 'vue-loader'
       },
       {
-        test: /\.css$/,
-        exclude: /node_modules/,
-        use: [
-          'vue-style-loader',
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../',
-              hmr: process.env.NODE_ENV === 'development',
-            },
-          },
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: [
-                require('autoprefixer')
-              ]
-            }
-          }
-        ],
-      },
-      {
         test: /\.(jpg|jpeg|png|gif)$/,
         loader: 'url-loader',
         options: {

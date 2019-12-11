@@ -10,6 +10,33 @@ const config = {
     // 公共目录定位到当前文件夹下
     publicPath: './'
   },
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'vue-style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')
+              ]
+            }
+          }
+        ],
+      }
+    ]
+  },
   performance: {
     hints: false 
   },

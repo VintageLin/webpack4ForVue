@@ -19,7 +19,27 @@ const config = {
     host: CONSTANT.HOST
   },
   devtool: 'source-map',
-  plugins: []
+  plugins: [],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        exclude: /node_modules/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: [
+                require('autoprefixer')
+              ]
+            }
+          }
+        ],
+      }
+    ]
+  }
 }
 
 module.exports = new Promise((resolve, reject) => {
