@@ -3,6 +3,7 @@ const merge = require('webpack-merge')
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyWebpackPlugin = require('uglifyjs-webpack-plugin')
 const webpackUniversalConfig = require("./webpack.config.js")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
   mode: 'production',
@@ -42,7 +43,13 @@ const config = {
   },
   plugins: [
     // 每次打包前清空打包目标文件夹
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    // 抽离css到单独文件
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css?[hash]',
+      chunkFilename: '[id].[hash].css',
+      ignoreOrder: false
+    })
   ],
   optimization: {
     minimizer: [

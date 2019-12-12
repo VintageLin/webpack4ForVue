@@ -4,6 +4,7 @@
         <div class="image">
           <img src="@/assets/images/1.png" alt="">
         </div>
+        <p>helloworld</p>
     </div>
 </template>
 <script>
@@ -13,6 +14,7 @@ export default {
 </script>
 <style scoped>
 .page1 {background: #086542; font-size: 30px; font-weight: bold;}
-.image {width: 100%;}
+.image {width: 100%}
 .image img {display: block; width: 100%;}
+p {font-size: 25px; font-style: italic}
 </style>

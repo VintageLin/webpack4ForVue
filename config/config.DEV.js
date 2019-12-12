@@ -3,6 +3,7 @@ const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const chalk = require('chalk')
 const log = console.log
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const webpackUniversalConfig = require('./webpack.config.js')
 const CONSTANT = require('./config.CONSTANT')
@@ -27,6 +28,13 @@ const config = {
         exclude: /node_modules/,
         use: [
           'vue-style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../',
+              hmr: process.env.NODE_ENV === 'development',
+            },
+          },
           'css-loader',
           {
             loader: 'postcss-loader',
