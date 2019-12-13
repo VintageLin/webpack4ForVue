@@ -1,5 +1,4 @@
 const path = require('path')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
@@ -58,12 +57,6 @@ module.exports = {
     new htmlWebpackPlugin({
       template: './src/index.html',
       chunks: './src/index.js'
-    }),
-    // 抽离css到单独文件
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css?[hash]',
-      chunkFilename: '[id].[hash].css',
-      ignoreOrder: false
     })
   ]
 }
